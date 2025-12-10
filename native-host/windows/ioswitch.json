@@ -1,0 +1,7 @@
+{
+  "name": "ioswitch",
+  "description": "IO Switch Native Messaging Host - Opens URLs in external browser",
+  "path": "C:\\ioswitch\\ioswitch_host.bat",
+  "type": "stdio",
+  "allowed_extensions": ["ioswitch@example.com"]
+}

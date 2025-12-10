@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <!-- Background circle -->
+  <circle cx="24" cy="24" r="22" fill="#4285f4"/>
+  
+  <!-- Arrow going right (redirect symbol) -->
+  <path d="M14 24 L28 24 L28 18 L38 24 L28 30 L28 24" fill="white" stroke="white" stroke-width="2" stroke-linejoin="round"/>
+  
+  <!-- Small browser icon on the left -->
+  <rect x="8" y="18" width="12" height="10" rx="2" fill="none" stroke="white" stroke-width="2"/>
+  <line x1="8" y1="22" x2="20" y2="22" stroke="white" stroke-width="1.5"/>
+</svg>

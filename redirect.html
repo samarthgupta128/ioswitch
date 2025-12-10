@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Opening in External Browser - IO Switch</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      max-width: 600px;
+      margin: 80px auto;
+      padding: 20px;
+      text-align: center;
+      background: #f5f5f5;
+    }
+    
+    .container {
+      background: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    h1 {
+      color: #333;
+      margin-bottom: 10px;
+    }
+    
+    .icon {
+      font-size: 64px;
+      margin-bottom: 20px;
+    }
+    
+    .url-box {
+      background: #f8f9fa;
+      border: 1px solid #dee2e6;
+      border-radius: 8px;
+      padding: 15px;
+      margin: 20px 0;
+      word-break: break-all;
+      font-family: 'Consolas', 'Monaco', monospace;
+      font-size: 14px;
+      color: #495057;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      margin: 10px 5px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    
+    .btn-primary {
+      background: #007bff;
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      background: #0056b3;
+    }
+    
+    .btn-secondary {
+      background: #6c757d;
+      color: white;
+    }
+    
+    .btn-secondary:hover {
+      background: #545b62;
+    }
+    
+    .btn-success {
+      background: #28a745;
+      color: white;
+    }
+    
+    .btn-success:hover {
+      background: #1e7e34;
+    }
+    
+    .info {
+      margin-top: 30px;
+      padding: 15px;
+      background: #fff3cd;
+      border: 1px solid #ffc107;
+      border-radius: 8px;
+      color: #856404;
+      font-size: 14px;
+    }
+    
+    .instructions {
+      margin-top: 30px;
+      text-align: left;
+      background: #e7f3fe;
+      border: 1px solid #b6d4fe;
+      border-radius: 8px;
+      padding: 20px;
+    }
+    
+    .instructions h3 {
+      margin-top: 0;
+      color: #0c5460;
+    }
+    
+    .instructions ol {
+      color: #0c5460;
+      padding-left: 20px;
+    }
+    
+    .instructions li {
+      margin-bottom: 8px;
+    }
+    
+    .copied {
+      color: #28a745;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="icon">🔀</div>
+    <h1>Opening in External Browser</h1>
+    <p>This website is configured to open in your default browser.</p>
+    
+    <div class="url-box" id="urlDisplay">Loading...</div>
+    
+    <div>
+      <button class="btn btn-primary" id="copyBtn">📋 Copy URL</button>
+      <button class="btn btn-secondary" id="closeBtn">Close Tab</button>
+    </div>
+    
+    <div class="info">
+      <strong>Native messaging not configured.</strong><br>
+      Please copy the URL above and paste it in your preferred browser.
+    </div>
+    
+    <div class="instructions">
+      <h3>🔧 Want automatic redirects?</h3>
+      <p>To automatically open links in another browser, you need to set up the native messaging host:</p>
+      <ol>
+        <li>Go to the extension folder</li>
+        <li>Run the <code>install_host.bat</code> script as Administrator</li>
+        <li>Restart Firefox</li>
+      </ol>
+      <p>After setup, links will automatically open in your default browser!</p>
+    </div>
+  </div>
+  
+  <script>
+    // Get the URL from query parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const targetUrl = urlParams.get('url') || 'No URL provided';
+    
+    // Display the URL
+    document.getElementById('urlDisplay').textContent = targetUrl;
+    
+    // Copy button
+    document.getElementById('copyBtn').addEventListener('click', function() {
+      navigator.clipboard.writeText(targetUrl).then(() => {
+        this.innerHTML = '✅ Copied!';
+        this.classList.add('btn-success');
+        setTimeout(() => {
+          this.innerHTML = '📋 Copy URL';
+          this.classList.remove('btn-success');
+        }, 2000);
+      });
+    });
+    
+    // Close button
+    document.getElementById('closeBtn').addEventListener('click', function() {
+      window.close();
+    });
+  </script>
+</body>
+</html>

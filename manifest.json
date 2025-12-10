@@ -1,0 +1,38 @@
+{
+  "manifest_version": 2,
+  "name": "IO Switch - Open in External Browser",
+  "version": "1.0",
+  "description": "Automatically opens specified websites in an external browser (e.g., Chrome) instead of Firefox",
+  "permissions": [
+    "webRequest",
+    "webRequestBlocking",
+    "nativeMessaging",
+    "storage",
+    "tabs",
+    "<all_urls>"
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": true
+  },
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "48": "icon.svg"
+    },
+    "default_title": "IO Switch - Manage Redirects"
+  },
+  "icons": {
+    "48": "icon.svg",
+    "96": "icon.svg"
+  },
+  "web_accessible_resources": [
+    "redirect.html"
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "ioswitch@example.com",
+      "strict_min_version": "57.0"
+    }
+  }
+}
